@@ -1,0 +1,117 @@
+<html>
+
+<!--
+Part 1:
+This is one of three homework assignments you can complete for this week (you must do
+two, you may do all three for extra credit). This is geared towards those of you who have
+never worked with javascript before.
+
+Your assignment should be in the form of an HTML page, which I will be able to run locally.
+Refer to the file 'js_in_webpage.html' on the github page for instructions on setting up
+javascript to run on an HTML page, and how to run/debug.
+
+You should complete both of these in 2 (or more) functions on one HTML page.
+
+(a) Create a function to reverse any word that you type in. This can be typed into either an input
+box or an alert box, and then print the result in a box or on the webpage.
+
+(b) Create a function that takes an input number, and prints a table with the first 20 multiples of
+the number, in order 5x4
+example: type in 2 and it results in:
+<table>
+<tr><td>2</td><td>4</td><td>6</td><td>8</td></tr>
+<tr><td>10</td><td>12</td><td>14</td><td>16</td></tr>
+<tr><td>18</td><td>20</td><td>22</td><td>24</td></tr>
+<tr><td>26</td><td>28</td><td>30</td><td>32</td></tr>
+<tr><td>34</td><td>36</td><td>38</td><td>40</td></tr>
+</table>
+-->
+
+<head><title>Part 1</title></head>
+
+<body>
+
+<h1> Part 1 </h1>
+
+<script type="text/javascript">
+
+//Source: https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+function reverseString(str) {
+    // Step 1. Use the split() method to return a new array
+    var splitString = str.split(""); // var splitString = "hello".split("");
+     
+    // Step 2. Use the reverse() method to reverse the new created array
+    var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+     
+    // Step 3. Use the join() method to join all elements of the array into a string
+    var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+        
+    //Step 4. Return the reversed string
+     return joinArray;
+    }
+</script> 
+
+
+<script type="text/javascript">
+function perfrom_reverse(){
+    var t = document.getElementById("target");
+    t.innerHTML = reverseString(document.getElementById('reverse_string').value);
+}
+</script>
+
+<h2>(a) Reverse a String</h2>
+<p>
+<form>
+    <input id="reverse_string" type="string" size="20">
+    <input type="button" value="Reverse String" onClick="perfrom_reverse();">
+</form>
+</p>
+<div id="target"></div>
+
+
+<script type="text/javascript">
+    function list_multiples(input_number){
+       table_data = "<table>"
+    
+        for (var i = 1; i < 6; i++){
+         
+            var num1 = input_number * (4*i - 3);
+            var num2 = input_number * (4*i - 2);
+            var num3 = input_number * (4*i - 1);
+            var num4 = input_number * (4*i - 0);
+
+            row_data =    
+            '<tr>' + 
+            '<td>' + num1 + '</td>' + 
+            '<td>' + num2 + '</td>' + 
+            '<td>' + num3 + '</td>' + 
+            '<td>' + num4 + '</td>' + 
+            '</tr>'; 
+            table_data = table_data + row_data
+        }
+        table_data = table_data + "</table>"
+    return table_data; 
+    }
+    </script>
+
+
+
+<script type="text/javascript">
+    function perfrom_multiples(){
+        var t = document.getElementById("target2");
+        t.innerHTML = list_multiples(document.getElementById('number_input').value);
+    }
+</script>
+
+
+<h2>(b) List first 20 multiples of number</h2>
+<p>
+<form>
+    <input id="number_input" type="number" size="4">
+    <input type="button" value="Number" onClick="perfrom_multiples();">
+</form>
+</p>
+<div id="target2"></div>
+
+</body>
+</html>
